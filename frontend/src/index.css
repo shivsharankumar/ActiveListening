@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-custom-image {
+  @apply bg-[url('./assets/active.svg')] bg-cover bg-center;
+}
+.login-page {
+  @apply shadow-md rounded-3xl p-8 bg-white w-[75%];
+  margin: 2rem auto;
+}
+.sign-in {
+  @apply p-2 w-[100%] flex justify-center items-center border border-gray-300 rounded-md bg-[#fec887];
+}
+.Home {
+  @apply shadow-md rounded-3xl p-8 bg-white w-[100%];
+  margin: 2rem auto;
+}
+.Analysis {
+  @apply shadow-md rounded-3xl p-8 bg-white w-[30rem] h-[20rem];
+  margin: 2rem auto;
+}

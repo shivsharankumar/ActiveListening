@@ -46,6 +46,13 @@ export default function Login() {
     }
   };
 
+  /**
+   * The handleChange function updates the state of credentials based on the changes in the input
+   * fields.
+   * @param event - The `event` parameter is an object that represents the event that triggered the
+   * `handleChange` function. It contains information about the event, such as the target element that
+   * triggered the event and the value of the target element.
+   */
   const handleChange = (event) => {
     const fieldName = event.target.name;
     const fieldValue = event.target.value;
@@ -55,10 +62,19 @@ export default function Login() {
     }));
   };
 
+  /**
+   * The handleClickShowPassword function toggles the showPassword property of the credentials object.
+   */
   const handleClickShowPassword = () => {
     setCredentials({ ...credentials, showPassword: !credentials.showPassword });
   };
 
+  /**
+   * The handleSubmit function is used to handle form submission, send a POST request to the login
+   * endpoint with the username and password, and perform authentication based on the response.
+   * @param event - The `event` parameter is an object that represents the event that triggered the
+   * function. In this case, it is likely an event object related to a form submission.
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     const body = JSON.stringify({

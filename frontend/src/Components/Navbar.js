@@ -51,9 +51,17 @@ export default function Navbar({
   };
 
   const [anchorEl, setAnchorEl] = useState(null);
+  /* The `handleMouseLeave` function is used to handle the event when the mouse leaves the menu
+  button. It sets the `anchorEl` state to `null`, which closes the menu. */
   const handleMouseLeave = (event) => {
     setAnchorEl(null);
   };
+  /**
+   * The function `handleMenuClick` toggles the `anchorEl` state between `null` and the target element
+   * of the event.
+   * @param event - The `event` parameter is an object that represents the event that triggered the
+   * function. It contains information about the event, such as the target element that was clicked.
+   */
   const handleMenuClick = (event) => {
     if (anchorEl) {
       setAnchorEl(null);
@@ -62,13 +70,14 @@ export default function Navbar({
       setAnchorEl(target);
     }
   };
+  /**
+   * The `handleClose` function logs out the user by making a GET request to the "logout/" endpoint,
+   * clearing the localStorage, deleting all cookies, and redirecting to the login page.
+   */
   const handleClose = () => {
     callAPI("GET", "logout/", "")
       .then(() => {
         localStorage.clear();
-
-        /* change expire attribute of cookies to current time, so it expires.
-Note this doesn't work for http only cookies, so only csrf cookie will expire. sessionid is handled by django itself */
         document.cookie.split(";").forEach((cookie) => {
           document.cookie = cookie
             .replace(/^ +/, "")
@@ -106,7 +115,7 @@ Note this doesn't work for http only cookies, so only csrf cookie will expire. s
               {/* <div className="col-10">
                 <SearchBar />
               </div> */}
-              <div className="flex flex-row justify-end mr-[-3rem]">
+              <div className="flex flex-row justify-end mr-[-3rem] relative">
                 <span className="mt-2">{auth.userName}</span>
                 <div className="mx-2">
                   <IconButton
@@ -116,13 +125,20 @@ Note this doesn't work for http only cookies, so only csrf cookie will expire. s
                     onClick={handleMenuClick}
                   >
                     <AccountCircleIcon
-                      style={{ color: "#997850", fontSize: "28px" }}
+                      style={{
+                        color: "#455964",
+                        fontSize: "28px",
+                        // position: "fixed",
+                      }}
                     />
                   </IconButton>
                   <Menu
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
+                    // className={{
+                    //   paper: "absolute top-[3.5rem] right-0 mt-1",
+                    // }}
                   >
                     <MenuItem
                       onMouseLeave={handleMouseLeave}

@@ -7,12 +7,11 @@ import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-
+import AnalyticsIcon from "@mui/icons-material/Analytics";
+import DynamicFormIcon from "@mui/icons-material/DynamicForm";
 import { Dashboard, FormatListBulleted } from "@mui/icons-material";
-
 const drawerWidth = 240;
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -62,11 +61,6 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const ModifiedListItemIcon = styled(ListItemIcon)(() => ({ minWidth: "20px" }));
-const CollapsedListItemIcon = styled(ListItemIcon)(() => ({
-  minWidth: "max-content",
-}));
-
 export default function Sidebar({ open, handleDrawerClose }) {
   const location = useLocation();
   const pathName = location.pathname;
@@ -98,14 +92,14 @@ export default function Sidebar({ open, handleDrawerClose }) {
           <List className="p-6 pr-3">
             <NavLink to="/">
               <ListItem button>
-                <ModifiedListItemIcon>
+                <DynamicFormIcon style={{ color: "#455964" }}>
                   <FormatListBulleted
                     sx={{ fontSize: "15px" }}
                     style={{
                       color: pathName === "/" ? "#997850" : "",
                     }}
                   />
-                </ModifiedListItemIcon>
+                </DynamicFormIcon>
 
                 <ListItemText
                   disableTypography
@@ -125,12 +119,12 @@ export default function Sidebar({ open, handleDrawerClose }) {
             </NavLink>
             <NavLink to="/analysis">
               <ListItem button>
-                <ModifiedListItemIcon>
+                <AnalyticsIcon style={{ color: "#455964" }}>
                   <Dashboard
                     sx={{ fontSize: "15px" }}
                     color={pathName === "/analysis" ? "#997850" : ""}
                   />
-                </ModifiedListItemIcon>
+                </AnalyticsIcon>
 
                 <ListItemText
                   disableTypography
@@ -152,20 +146,20 @@ export default function Sidebar({ open, handleDrawerClose }) {
         <List>
           <NavLink to="/">
             <ListItem className="d-flex justify-content-center mb-2" button>
-              <CollapsedListItemIcon>
+              <DynamicFormIcon style={{ color: "#455964" }}>
                 <FormatListBulleted
                   style={{
                     color: pathName === "/" ? "#997850" : "",
                   }}
                 />
-              </CollapsedListItemIcon>
+              </DynamicFormIcon>
             </ListItem>
           </NavLink>
           <NavLink to="/analysis">
             <ListItem className="d-flex justify-content-center mb-2" button>
-              <CollapsedListItemIcon>
+              <AnalyticsIcon style={{ color: "#455964" }}>
                 <Dashboard color={pathName === "/analysis" ? "#997850" : ""} />
-              </CollapsedListItemIcon>
+              </AnalyticsIcon>
             </ListItem>
           </NavLink>
         </List>

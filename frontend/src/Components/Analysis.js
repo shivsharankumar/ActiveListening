@@ -9,13 +9,17 @@ import {
   Tooltip,
   Filler,
   Legend,
+  BarElement,
+  // ArcElement,
 } from "chart.js";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
 ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
+  BarElement,
+  // ArcElement,
   Title,
   Tooltip,
   Filler,
@@ -39,6 +43,7 @@ export const options = {
 export default function Analysis() {
   const [datelist, setDatelist] = useState(null);
   const [valuelist, setValuelist] = useState(null);
+  const [chartType, setChartType] = useState("line");
   useEffect(() => {
     async function fetchLabelOptions() {
       try {
@@ -74,23 +79,39 @@ export default function Analysis() {
         return null;
     }
   });
-  console.log("=====>", dataList, datelist);
+
   const data = {
-    labels: datelist, // Replace with your actual dates
+    labels: datelist,
     datasets: [
       {
         fill: true,
         label: "Listening Accuracy",
-        data: dataList, // Replace with your data
+        data: dataList,
         borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgba(53, 162, 235, 0.5)", // Color for the filled area below the line
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
         pointBackgroundColor: "red",
       },
     ],
   };
   return (
-    <div className="Analysis">
-      <Line options={options} data={data} />
+    <div className="Analysis overflow-x-scroll">
+      <div className="flex justify-center items-center">
+        <label htmlFor="chartType" className="mr-2">
+          Select Chart Type:
+        </label>
+        <select
+          id="chartType"
+          value={chartType}
+          onChange={(e) => setChartType(e.target.value)}
+          className="p-1 border rounded"
+        >
+          <option value="line">Line</option>
+          <option value="bar">Bar</option>
+        </select>
+      </div>
+
+      {chartType === "line" && <Line options={options} data={data} />}
+      {chartType === "bar" && <Bar options={options} data={data} />}
     </div>
   );
 }

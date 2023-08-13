@@ -7,6 +7,8 @@ const initialValues = {
   date: "",
 };
 
+/* The `validationSchema` constant is defining the validation rules for the form fields in the `MyForm`
+component. It is using the Yup library to create a validation schema object. */
 const validationSchema = Yup.object().shape({
   level: Yup.string().required("Level is required"),
   date: Yup.date()
@@ -23,7 +25,13 @@ const validationSchema = Yup.object().shape({
 const MyForm = () => {
   const [labelOptions, setLabelOptions] = useState([]);
   const [message, setMessage] = useState(null);
-  const [isDeleted, setIsdelete] = useState(false);
+
+  const resetFormToInitialState = (formik) => {
+    formik.resetForm({
+      values: initialValues,
+    });
+  };
+
   useEffect(() => {
     async function fetchLabelOptions() {
       try {
@@ -37,6 +45,11 @@ const MyForm = () => {
 
     fetchLabelOptions();
   }, []);
+
+  /**
+   * The function `handleDeleteButton` sends a POST request to delete listening levels and handles the
+   * response and error messages.
+   */
   const handleDeleteButton = async () => {
     const currentDate = new Date();
 
@@ -46,16 +59,22 @@ const MyForm = () => {
 
     const formattedDate = `${year}-${month}-${day}`;
     const value = { date: formattedDate };
-    console.log("handleDeleteButto", value, initialValues);
     try {
       const response = await callAPI("POST", "delete-listening-levels/", value);
       console.log("response", response);
       setMessage(response);
+      resetFormToInitialState();
     } catch (error) {
       console.error("Error:", error.response.data);
       setMessage(error);
     }
   };
+  /**
+   * The handleSubmit function is an asynchronous function that handles form submission by making a
+   * POST request to an API endpoint and updating the message state based on the response or error.
+   * @param values - The `values` parameter is an object that contains the form values submitted by the
+   * user. It typically includes the input values from the form fields.
+   */
   const handleSubmit = async (values, { setSubmitting }) => {
     console.log(`Submit`, values);
     try {
@@ -129,7 +148,7 @@ const MyForm = () => {
               <div>
                 <button
                   type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg disabled:bg-gray-400"
+                  className="bg-[#455964] text-white px-4 py-2 rounded-lg disabled:bg-gray-400"
                   disabled={isSubmitting}
                 >
                   Submit

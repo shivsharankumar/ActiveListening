@@ -28,7 +28,7 @@ here In Home You Can add your listening levels data with respect to the data if 
 in Analysis Part You can see that you an analyse data based on your input History SS with dashboard:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/AnalysisWithDashboard.png
 And Here you will select the Graph Type As well SS Below:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/AnalysisWithBar.png
 
-step to install Backend:-
+step to run Backend:-
 1. cd backend
 2. install virtualenv and create and activate it .
 3. pip3 install -r requirements.txt
@@ -36,7 +36,7 @@ step to install Backend:-
 5. migrate it with python manage.py makemigrations and python manage.py migrate
 
    
-steps to install frontend
+steps to run frontend:-
 1. cd frontend
 2. npm i
 3. run application using npm run dev or npm run dev:local

@@ -1,5 +1,5 @@
 # ActiveListening
-Listening deeply is an important skill in today’s world. We want to develop an easy tool
+Listening deeply is an important skill in today’s world. I developed an easy tool
 that allows the participants to record their listening level once in a day. It could be at the end of
 the day, before or after a team-meeting or a one-one check in or any other instance.
 
@@ -18,3 +18,12 @@ for the frontend.
 User authentication and authorization: The application should allow users to log in and
 manage their accounts. Only authenticated users should be able to record their listening
 level.
+we have following dashboard :-
+1.Login:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/login.png
+2.Home:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/Home.png
+3.Analysis:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/Analysis.png
+
+here In Home You Can add your listening levels data with respect to the data if you select the data for the same data you will find the below ss:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/DataValidation.png
+
+in Analysis Part You can see that you an analyse data based on your input History SS with dashboard:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/AnalysisWithDashboard.png
+And Here you will select the Graph Type As well SS Below:- https://github.com/shivsharankumar/ActiveListening/blob/main/screenshot/AnalysisWithBar.png
